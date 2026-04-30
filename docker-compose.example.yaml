@@ -1,0 +1,12 @@
+version: '5.1.1'
+
+services:
+  script:
+    build:
+      context: .
+      dockerfile: Docker.compose-example
+    depends_on:
+      - redis
+
+  redis:
+    image: redis:alpine
