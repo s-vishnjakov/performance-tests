@@ -1,0 +1,15 @@
+{
+  "name": "John",
+  "age": 30,
+  "is_student": false,
+  "courses": [
+    "Pyhton",
+    "QA Authomation",
+    "API Testing"
+  ],
+  "address": {
+    "city": "Moscow",
+    "zip": "220147",
+    "street": "Lenina"
+  }
+}
