@@ -14,9 +14,6 @@ create_user_payload = {
 
 create_user_response = httpx.post('http://localhost:8003/api/v1/users', json=create_user_payload)
 created_user_id = create_user_response.json()["user"]["id"]
-print(f'Create user response:', create_user_response.json(), sep='\n')
-print(f'Create user status code:', create_user_response.status_code)
-
 open_deposit_account_payload = {'userId': f'{created_user_id}'}
 
 open_deposit_account = httpx.post("http://localhost:8003/api/v1/accounts/open-deposit-account", json=open_deposit_account_payload)
