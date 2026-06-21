@@ -3,7 +3,7 @@ from typing import TypedDict
 from clients.http.client import HTTPClient
 
 
-class IssueCardDict(TypedDict):
+class IssueCardRequestDict(TypedDict):
     """
     Структура данных для создания виртуальной/физической карты.
     """
@@ -15,7 +15,7 @@ class CardsGatewayHTTPClient(HTTPClient):
     """
     Клиент для взаимодействия с /api/v1/cards сервиса http-gateway.
     """
-    def issue_virtual_card_api(self, request: IssueCardDict) -> Response:
+    def issue_virtual_card_api(self, request: IssueCardRequestDict) -> Response:
         """
         Выпуск новой виртуальной карты.
 
@@ -24,7 +24,7 @@ class CardsGatewayHTTPClient(HTTPClient):
         """
         return self.post("/api/v1/cards/issue-virtual-card", json=request)
 
-    def issue_physical_card_api(self, request: IssueCardDict) -> Response:
+    def issue_physical_card_api(self, request: IssueCardRequestDict) -> Response:
         """
         Выпуск новой физической карты.
 
