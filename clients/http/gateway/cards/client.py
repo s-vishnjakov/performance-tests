@@ -18,6 +18,7 @@ class CardsGatewayHTTPClient(HTTPClient):
     def issue_virtual_card_api(self, request: IssueCardDict) -> Response:
         """
         Выпуск новой виртуальной карты.
+
         :param request: Словарь с данными ID пользователя и ID счета.
         :return: Ответ от сервера (объект httpx.Response).
         """
@@ -26,6 +27,7 @@ class CardsGatewayHTTPClient(HTTPClient):
     def issue_physical_card_api(self, request: IssueCardDict) -> Response:
         """
         Выпуск новой физической карты.
+
         :param request: Словарь с данными ID пользователя и ID счета.
         :return: Ответ от сервера (объект httpx.Response).
         """
