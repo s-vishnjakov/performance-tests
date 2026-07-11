@@ -66,7 +66,7 @@ class AccountsGatewayHTTPClient(HTTPClient):
         Выполняет POST-запрос для открытия сберегательного счёта.
 
         :param request: Словарь с userId.
-        :return: Объект httpx.Response.
+        :return: Объект httpx.Response с результатом операции.
         """
         return self.post("/api/v1/accounts/open-savings-account", json=request)
 
@@ -75,7 +75,7 @@ class AccountsGatewayHTTPClient(HTTPClient):
         Выполняет POST-запрос для открытия дебетовой карты.
 
         :param request: Словарь с userId.
-        :return: Объект httpx.Response.
+        :return: Объект httpx.Response с результатом операции.
         """
         return self.post("/api/v1/accounts/open-debit-account", json=request)
 
@@ -84,6 +84,6 @@ class AccountsGatewayHTTPClient(HTTPClient):
         Выполняет POST-запрос для открытия кредитной карты.
 
         :param request: Словарь с userId.
-        :return: Объект httpx.Response.
+        :return: Объект httpx.Response с результатом операции.
         """
         return self.post("/api/v1/accounts/open-credit-account", json=request)
