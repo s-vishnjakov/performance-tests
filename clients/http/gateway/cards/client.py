@@ -1,6 +1,7 @@
 from httpx import Response
 from typing import TypedDict
 from clients.http.client import HTTPClient
+from clients.http.gateway.client import build_gateway_http_client
 
 
 class IssueCardRequestDict(TypedDict):
@@ -32,3 +33,7 @@ class CardsGatewayHTTPClient(HTTPClient):
         :return: Ответ от сервера (объект httpx.Response).
         """
         return self.post("/api/v1/cards/issue-physical-card", json=request)
+
+
+def build_cards_http_client() -> CardsGatewayHTTPClient:
+    return CardsGatewayHTTPClient(client=build_gateway_http_client())

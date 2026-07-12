@@ -2,6 +2,8 @@ from clients.http.client import HTTPClient
 from httpx import Response, QueryParams
 from typing import TypedDict
 
+from clients.http.gateway.client import build_gateway_http_client
+
 
 class GetAccountsQueryDict(TypedDict):
     """
@@ -87,3 +89,7 @@ class AccountsGatewayHTTPClient(HTTPClient):
         :return: Объект httpx.Response с результатом операции.
         """
         return self.post("/api/v1/accounts/open-credit-account", json=request)
+
+
+def build_accounts_http_client() -> AccountsGatewayHTTPClient:
+    return AccountsGatewayHTTPClient(client=build_gateway_http_client())

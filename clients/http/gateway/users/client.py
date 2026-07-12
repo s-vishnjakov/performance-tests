@@ -1,6 +1,7 @@
 from httpx import Response
 from typing import TypedDict
 from clients.http.client import HTTPClient
+from clients.http.gateway.client import build_gateway_http_client
 
 
 class CreateUserRequestDict(TypedDict):
@@ -35,3 +36,7 @@ class UsersGatewayHTTPClient(HTTPClient):
         :return: Ответ от сервера (объект httpx.Response).
         """
         return self.post("/api/v1/users", json=request)
+
+
+def build_users_http_client() -> UsersGatewayHTTPClient:
+    return UsersGatewayHTTPClient(client=build_gateway_http_client())

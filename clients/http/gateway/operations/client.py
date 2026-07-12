@@ -2,6 +2,8 @@ from clients.http.client import HTTPClient
 from httpx import Response, QueryParams
 from typing import TypedDict
 
+from clients.http.gateway.client import build_gateway_http_client
+
 
 class GetOperationsQueryDict(TypedDict):
     """
@@ -131,3 +133,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :return: Объект httpx.Response с данными о проведенной операции.
         """
         return self.post("/api/v1/operations/make-cash-withdrawal-operation", json=request)
+
+
+def build_cards_http_client() -> OperationsGatewayHTTPClient:
+    return OperationsGatewayHTTPClient(client=build_gateway_http_client())
