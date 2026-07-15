@@ -39,4 +39,9 @@ class UsersGatewayHTTPClient(HTTPClient):
 
 
 def build_users_http_client() -> UsersGatewayHTTPClient:
+    """
+    Функция создаёт экземпляр UsersGatewayHTTPClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию UsersGatewayHTTPClient.
+    """
     return UsersGatewayHTTPClient(client=build_gateway_http_client())

@@ -136,4 +136,9 @@ class OperationsGatewayHTTPClient(HTTPClient):
 
 
 def build_cards_http_client() -> OperationsGatewayHTTPClient:
+    """
+    Функция создаёт экземпляр OperationsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию OperationsGatewayHTTPClient.
+    """
     return OperationsGatewayHTTPClient(client=build_gateway_http_client())

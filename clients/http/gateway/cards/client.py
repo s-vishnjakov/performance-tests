@@ -36,4 +36,9 @@ class CardsGatewayHTTPClient(HTTPClient):
 
 
 def build_cards_http_client() -> CardsGatewayHTTPClient:
+    """
+    Функция создаёт экземпляр CardsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию CardsGatewayHTTPClient.
+    """
     return CardsGatewayHTTPClient(client=build_gateway_http_client())

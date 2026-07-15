@@ -28,4 +28,9 @@ class DocumentsGatewayHTTPClient(HTTPClient):
 
 
 def build_documents_http_client() -> DocumentsGatewayHTTPClient:
+    """
+    Функция создаёт экземпляр DocumentsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+
+    :return: Готовый к использованию DocumentsGatewayHTTPClient.
+    """
     return DocumentsGatewayHTTPClient(client=build_gateway_http_client())
