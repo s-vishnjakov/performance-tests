@@ -35,7 +35,7 @@ class CardsGatewayHTTPClient(HTTPClient):
         return self.post("/api/v1/cards/issue-physical-card", json=request)
 
 
-def build_cards_http_client() -> CardsGatewayHTTPClient:
+def build_cards_gateway_http_client() -> CardsGatewayHTTPClient:
     """
     Функция создаёт экземпляр CardsGatewayHTTPClient с уже настроенным HTTP-клиентом.
 

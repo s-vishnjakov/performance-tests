@@ -91,7 +91,7 @@ class AccountsGatewayHTTPClient(HTTPClient):
         return self.post("/api/v1/accounts/open-credit-account", json=request)
 
 
-def build_accounts_http_client() -> AccountsGatewayHTTPClient:
+def build_accounts_gateway_http_client() -> AccountsGatewayHTTPClient:
     """
     Функция создаёт экземпляр AccountsGatewayHTTPClient с уже настроенным HTTP-клиентом.
 
