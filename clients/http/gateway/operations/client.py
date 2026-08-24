@@ -135,7 +135,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         return self.post("/api/v1/operations/make-cash-withdrawal-operation", json=request)
 
 
-def build_cards_http_client() -> OperationsGatewayHTTPClient:
+def build_operations_gateway_http_client() -> OperationsGatewayHTTPClient:
     """
     Функция создаёт экземпляр OperationsGatewayHTTPClient с уже настроенным HTTP-клиентом.
 

@@ -27,7 +27,7 @@ class DocumentsGatewayHTTPClient(HTTPClient):
         return self.get(f"/api/v1/documents/contract-document/{account_id}")
 
 
-def build_documents_http_client() -> DocumentsGatewayHTTPClient:
+def build_documents_gateway_http_client() -> DocumentsGatewayHTTPClient:
     """
     Функция создаёт экземпляр DocumentsGatewayHTTPClient с уже настроенным HTTP-клиентом.
 

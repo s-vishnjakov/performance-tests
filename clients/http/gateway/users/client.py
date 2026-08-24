@@ -71,7 +71,7 @@ class UsersGatewayHTTPClient(HTTPClient):
         response = self.create_user_api(request)
         return response.json()
 
-def build_users_http_client() -> UsersGatewayHTTPClient:
+def build_users_gateway_http_client() -> UsersGatewayHTTPClient:
     """
     Функция создаёт экземпляр UsersGatewayHTTPClient с уже настроенным HTTP-клиентом.
 
