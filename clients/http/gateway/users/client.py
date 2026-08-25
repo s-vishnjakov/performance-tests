@@ -7,6 +7,9 @@ from clients.http.gateway.client import build_gateway_http_client
 
 
 class UserDict(TypedDict):
+    """
+    Описание структуры пользователя.
+    """
     id: str
     email: str
     lastName: str
@@ -15,7 +18,10 @@ class UserDict(TypedDict):
     phoneNumber: str
 
 
-class GetUserResponseDict(UserDict):
+class GetUserResponseDict(TypedDict):
+    """
+    Описание структуры ответа получения пользователя.
+    """
     user: UserDict
 
 
@@ -31,6 +37,9 @@ class CreateUserRequestDict(TypedDict):
 
 
 class CreateUserResponseDict(TypedDict):
+    """
+    Описание структуры ответа создания пользователя.
+    """
     user: UserDict
 
 class UsersGatewayHTTPClient(HTTPClient):
