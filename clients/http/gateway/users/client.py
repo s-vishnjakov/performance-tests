@@ -13,33 +13,44 @@ from clients.http.gateway.users.schema import (
 
 class UsersGatewayHTTPClient(HTTPClient):
     """
-    Клиент для взаимодействия с /api/v1/users сервиса http-gateway.
+    Client to interact with the /api/v1/users endpoint of the http-gateway service.
     """
 
     def get_user_api(self, user_id: str) -> Response:
         """
-        Получить данные пользователя по его user_id.
+        Retrieves user data by the specified user ID.
 
-        :param user_id: Идентификатор пользователя.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param user_id: The unique identifier of the user.
+        :return: An HTTP response containing the user data.
         """
         return self.get(f"/api/v1/users/{user_id}")
 
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
         """
-        Создание нового пользователя.
+        Creates a new user.
 
-        :param request: Словарь с данными нового пользователя.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param request: The request schema containing the new user data.
+        :return: An HTTP response from the server.
         """
         return self.post("/api/v1/users", json=request.model_dump(by_alias=True))
 
     def get_user(self, user_id: str) -> GetUserResponseSchema:
+        """
+        Retrieves user data by the specified user ID and returns it as a validated schema object.
+
+        :param user_id: The unique identifier of the user.
+        :return: A validated GetUserResponseSchema object containing the user data.
+        """
         response = self.get_user_api(user_id)
         return GetUserResponseSchema.model_validate_json(response.text)
 
 
     def create_user(self) -> CreateUserResponseSchema:
+        """
+        Creates a new user and returns the response as a validated schema object.
+
+        :return: A validated CreateUserResponseSchema object containing the created user data.
+        """
         request = CreateUserRequestSchema(
             email=f"user.{time.time()}@example.com",
             last_name="string",
@@ -53,8 +64,8 @@ class UsersGatewayHTTPClient(HTTPClient):
 
 def build_users_gateway_http_client() -> UsersGatewayHTTPClient:
     """
-    Функция создаёт экземпляр UsersGatewayHTTPClient с уже настроенным HTTP-клиентом.
+    Builds and returns an instance of UsersGatewayHTTPClient with a pre-configured HTTP client.
 
-    :return: Готовый к использованию UsersGatewayHTTPClient.
+    :return: A ready-to-use UsersGatewayHTTPClient instance.
     """
     return UsersGatewayHTTPClient(client=build_gateway_http_client())
