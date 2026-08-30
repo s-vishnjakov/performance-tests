@@ -1,5 +1,4 @@
-from typing import Annotated
-from pydantic import BaseModel, Field, EmailStr, ConfigDict, StringConstraints
+from pydantic import BaseModel, Field, EmailStr, ConfigDict
 from pydantic.alias_generators import to_camel
 
 
