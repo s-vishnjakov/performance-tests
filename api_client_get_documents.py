@@ -16,11 +16,11 @@ open_credit_card_account_response = accounts_gateway_client.open_credit_card_acc
 print('Open credit card account response:', open_credit_card_account_response)
 
 get_tariff_document_response = documents_gateway_client.get_tariff_document(
-    account_id=open_credit_card_account_response['account']['id']
+    account_id=open_credit_card_account_response.account.id
 )
 print('Get tariff document response:', get_tariff_document_response)
 
 get_contract_document_response = documents_gateway_client.get_contract_document(
-    account_id=open_credit_card_account_response['account']['id']
+    account_id=open_credit_card_account_response.account.id
 )
 print('Get contract document response:', get_contract_document_response)
