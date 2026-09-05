@@ -37,7 +37,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         Retrieves ALL operations of the specified account.
 
         :param query: The query schema containing the account identifier.
-        :return: An HTTP response containing the operations data.
+        :return: An HTTP response containing the operations` data.
         """
         return self.get(
             "/api/v1/operations",
@@ -49,7 +49,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         Retrieves the operations statistics of the specified account.
 
         :param query: The query schema containing the account identifier.
-        :return: An HTTP response containing the operations statistics.
+        :return: An HTTP response containing the operations` statistics.
         """
         return self.get(
             "/api/v1/operations/operations-summary",
@@ -163,7 +163,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         Retrieves ALL operations of the specified account as a validated schema object.
 
         :param account_id: The unique identifier of the account.
-        :return: A validated GetOperationsResponseSchema object containing the operations data.
+        :return: A validated GetOperationsResponseSchema object containing the operations` data.
         """
         query = GetOperationsQuerySchema(account_id=account_id)
         response = self.get_operations_api(query)
@@ -260,7 +260,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :return: A validated MakeTransferOperationResponseSchema object containing the operation data.
         """
         request = MakeTransferOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
+            status=OperationStatus.FAILED,
             amount=350.00,
             card_id=card_id,
             account_id=account_id
