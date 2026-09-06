@@ -18,15 +18,15 @@ from clients.http.gateway.accounts.schema import (
 
 class AccountsGatewayHTTPClient(HTTPClient):
     """
-    Клиент для взаимодействия с /api/v1/accounts сервиса http-gateway.
+    Client to interact with the /api/v1/accounts endpoint of the http-gateway service.
     """
 
     def get_accounts_api(self, query: GetAccountsQuerySchema) -> Response:
         """
-        Выполняет GET-запрос на получение списка счетов пользователя.
+        Retrieves the list of user accounts.
 
-        :param query: Словарь с параметрами запроса, например: {'userId': '123'}.
-        :return: Объект httpx.Response с данными о счетах.
+        :param query: The query schema containing the user identifier.
+        :return: An HTTP response containing the accounts data.
         """
         return self.get(
             "/api/v1/accounts",
@@ -35,10 +35,10 @@ class AccountsGatewayHTTPClient(HTTPClient):
 
     def open_deposit_account_api(self, request: OpenDepositAccountRequestSchema) -> Response:
         """
-        Выполняет POST-запрос для открытия депозитного счёта.
+        Opens a deposit account.
 
-        :param request: Словарь с userId.
-        :return: Объект httpx.Response с результатом операции.
+        :param request: The request schema containing the user identifier.
+        :return: An HTTP response containing the result of the operation.
         """
         return self.post(
             "/api/v1/accounts/open-deposit-account",
@@ -47,10 +47,10 @@ class AccountsGatewayHTTPClient(HTTPClient):
 
     def open_savings_account_api(self, request: OpenSavingsAccountRequestSchema) -> Response:
         """
-        Выполняет POST-запрос для открытия сберегательного счёта.
+        Opens a savings account.
 
-        :param request: Словарь с userId.
-        :return: Объект httpx.Response с результатом операции.
+        :param request: The request schema containing the user identifier.
+        :return: An HTTP response containing the result of the operation.
         """
         return self.post(
             "/api/v1/accounts/open-savings-account",
@@ -59,10 +59,10 @@ class AccountsGatewayHTTPClient(HTTPClient):
 
     def open_debit_card_account_api(self, request: OpenDebitCardAccountRequestSchema) -> Response:
         """
-        Выполняет POST-запрос для открытия дебетовой карты.
+        Opens a debit card account.
 
-        :param request: Словарь с userId.
-        :return: Объект httpx.Response с результатом операции.
+        :param request: The request schema containing the user identifier.
+        :return: An HTTP response containing the result of the operation.
         """
         return self.post(
             "/api/v1/accounts/open-debit-card-account",
@@ -71,10 +71,10 @@ class AccountsGatewayHTTPClient(HTTPClient):
 
     def open_credit_card_account_api(self, request: OpenCreditCardAccountRequestSchema) -> Response:
         """
-        Выполняет POST-запрос для открытия кредитной карты.
+        Opens a credit card account.
 
-        :param request: Словарь с userId.
-        :return: Объект httpx.Response с результатом операции.
+        :param request: The request schema containing the user identifier.
+        :return: An HTTP response containing the result of the operation.
         """
         return self.post(
             "/api/v1/accounts/open-credit-card-account",
@@ -109,8 +109,8 @@ class AccountsGatewayHTTPClient(HTTPClient):
 
 def build_accounts_gateway_http_client() -> AccountsGatewayHTTPClient:
     """
-    Функция создаёт экземпляр AccountsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+    Creates an instance of AccountsGatewayHTTPClient with a pre-configured HTTP client.
 
-    :return: Готовый к использованию AccountsGatewayHTTPClient.
+    :return: A ready-to-use AccountsGatewayHTTPClient instance.
     """
     return AccountsGatewayHTTPClient(client=build_gateway_http_client())

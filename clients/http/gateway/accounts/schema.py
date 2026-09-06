@@ -18,18 +18,18 @@ class AccountStatus(StrEnum):
 
 class AccountSchema(BaseModel):
     """
-    Описание структуры аккаунта(счёта).
+    Account structure description.
     """
     id: str
     type: AccountType
-    cards: list[CardSchema]   # Вложенная структура: список карт
+    cards: list[CardSchema]   # Nested structure: CardSchema
     status: AccountStatus
     balance: float
 
 
 class GetAccountsQuerySchema(BaseModel):
     """
-    Структура данных для получения списка счетов пользователя.
+    Query parameters for getting the list of user accounts.
     """
     model_config = ConfigDict(validate_by_name=True)
 
@@ -38,14 +38,14 @@ class GetAccountsQuerySchema(BaseModel):
 
 class GetAccountsResponseSchema(BaseModel):
     """
-    Описание структуры ответа получения списка счетов.
+    Response structure for getting the list of accounts.
     """
     accounts: list[AccountSchema]
 
 
 class OpenDepositAccountRequestSchema(BaseModel):
     """
-    Структура данных для открытия депозитного счета.
+    Request structure for opening a deposit account.
     """
     model_config = ConfigDict(validate_by_name=True)
 
@@ -54,14 +54,14 @@ class OpenDepositAccountRequestSchema(BaseModel):
 
 class OpenDepositAccountResponseSchema(BaseModel):
     """
-    Описание структуры ответа открытия депозитного счета.
+    Response structure for opening a deposit account.
     """
     account: AccountSchema
 
 
 class OpenSavingsAccountRequestSchema(BaseModel):
     """
-    Структура данных для открытия сберегательного счета.
+    Request structure for opening a savings account.
     """
     model_config = ConfigDict(validate_by_name=True)
 
@@ -70,14 +70,14 @@ class OpenSavingsAccountRequestSchema(BaseModel):
 
 class OpenSavingsAccountResponseSchema(BaseModel):
     """
-    Описание структуры ответа открытия сберегательного счета.
+    Response structure for opening a savings account.
     """
     account: AccountSchema
 
 
 class OpenDebitCardAccountRequestSchema(BaseModel):
     """
-    Структура данных для открытия дебетового счета.
+    Request structure for opening a debit card account.
     """
     model_config = ConfigDict(validate_by_name=True)
 
@@ -86,14 +86,14 @@ class OpenDebitCardAccountRequestSchema(BaseModel):
 
 class OpenDebitCardAccountResponseSchema(BaseModel):
     """
-    Описание структуры ответа открытия дебетового счета.
+    Response structure for opening a debit card account.
     """
     account: AccountSchema
 
 
 class OpenCreditCardAccountRequestSchema(BaseModel):
     """
-    Структура данных для открытия кредитного счета.
+    Request structure for opening a credit card account.
     """
     model_config = ConfigDict(validate_by_name=True)
 
@@ -102,6 +102,6 @@ class OpenCreditCardAccountRequestSchema(BaseModel):
 
 class OpenCreditCardAccountResponseSchema(BaseModel):
     """
-    Описание структуры ответа открытия кредитного счета.
+    Response structure for opening a credit card account.
     """
     account: AccountSchema

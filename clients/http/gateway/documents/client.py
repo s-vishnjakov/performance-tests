@@ -10,24 +10,24 @@ from clients.http.gateway.documents.schema import (
 
 class DocumentsGatewayHTTPClient(HTTPClient):
     """
-    Клиент для взаимодействия с /api/v1/documents сервиса http-gateway.
+    Client to interact with the /api/v1/documents endpoint of the http-gateway service.
     """
 
     def get_tariff_document_api(self, account_id: str) -> Response:
         """
-        Получение документа тарифа по счету.
+        Retrieves the tariff document of the specified account.
 
-        :param account_id: Идентификатор счета.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param account_id: The unique identifier of the account.
+        :return: An HTTP response from the server.
         """
         return self.get(f"/api/v1/documents/tariff-document/{account_id}")
 
     def get_contract_document_api(self, account_id: str) -> Response:
         """
-        Получение документа контракта по счету.
+        Retrieves the contract document of the specified account.
 
-        :param account_id: Идентификатор счета.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param account_id: The unique identifier of the account.
+        :return: An HTTP response from the server.
         """
         return self.get(f"/api/v1/documents/contract-document/{account_id}")
 
@@ -42,8 +42,8 @@ class DocumentsGatewayHTTPClient(HTTPClient):
 
 def build_documents_gateway_http_client() -> DocumentsGatewayHTTPClient:
     """
-    Функция создаёт экземпляр DocumentsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+    Creates an instance of DocumentsGatewayHTTPClient with a pre-configured HTTP client.
 
-    :return: Готовый к использованию DocumentsGatewayHTTPClient.
+    :return: A ready-to-use DocumentsGatewayHTTPClient instance.
     """
     return DocumentsGatewayHTTPClient(client=build_gateway_http_client())

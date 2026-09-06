@@ -4,29 +4,29 @@ from httpx import Client, URL, QueryParams, Response
 
 class HTTPClient:
     """
-    Базовый HTTP API клиент, принимающий объект httpx.Client.
+    Base HTTP API client that wraps an httpx.Client instance.
 
-    :param client: экземпляр httpx.Client для выполнения HTTP-запросов
+    :param client: The httpx.Client instance used to perform HTTP requests.
     """
     def __init__(self, client: Client):
         self.client = client
 
     def get(self, url: URL | str, params: QueryParams | None = None) -> Response:
         """
-        Выполняет GET-запрос.
+        Performs a GET request.
 
-        :param url: URL-адрес эндпоинта.
-        :param params: GET-параметры запроса (например, ?key=value).
-        :return: Объект Response с данными ответа.
+        :param url: The endpoint URL.
+        :param params: The query parameters of the request (for example, ?key=value).
+        :return: A Response object containing the response data.
         """
         return self.client.get(url, params=params)
 
     def post(self, url: URL | str, json: Any | None = None) -> Response:
         """
-        Выполняет POST-запрос.
+        Performs a POST request.
 
-        :param url: URL-адрес эндпоинта.
-        :param json: Данные в формате JSON.
-        :return: Объект Response с данными ответа.
+        :param url: The endpoint URL.
+        :param json: The request payload in JSON format.
+        :return: A Response object containing the response data.
         """
         return self.client.post(url, json=json)

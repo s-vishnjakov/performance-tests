@@ -6,40 +6,40 @@ from faker.providers.python import TEnum
 
 class Fake:
     """
-    Класс для генерации случайных тестовых данных с использованием библиотеки Faker.
+    Random test data generator built on top of the Faker library.
     """
     def __init__(self, faker: Faker):
         """
-        :param faker: Экземпляр класса Faker, который будет использоваться для генерации данных.
+        :param faker: The Faker instance used to generate the data.
         """
         self.faker = faker
 
     def enum(self, value: type[TEnum]) -> TEnum:
         """
-        Выбирает случайное значение из enum-типа.
+        Picks a random member of the given enum type.
 
-        :param value: Enum-класс для генерации значения.
-        :return: Случайное значение из перечисления.
+        :param value: The enum class to pick a value from.
+        :return: A random member of the enumeration.
         """
         return self.faker.enum(value)
 
     def email(self) -> str:
         """
-        Генерирует случайный email.
+        Generates a random email address.
 
-        Будет использован случайный домен, если не указано другое.
-        :return: Случайный email.
+        A random domain is used unless another one is specified.
+        :return: A random email address.
         """
         return f"{time.time()}.{self.faker.email()}"
 
     def category(self) -> str:
         """
-        Генерирует случайную категорию покупки из предопределённого списка.
+        Generates a random purchase category from a predefined list.
 
-        Используется для имитации типов расходов в системах, моделирующих
-        пользовательские транзакции или поведение при оплате товаров и услуг.
+        Used to simulate spending types in systems that model user
+        transactions or payment behaviour for goods and services.
 
-        :return: Случайная категория (например, 'gas', 'taxi', 'supermarkets' и т.д.).
+        :return: A random category (for example, 'gas', 'taxi', 'supermarkets').
         """
         return self.faker.random_element([
             "gas",
@@ -63,53 +63,53 @@ class Fake:
 
     def last_name(self) -> str:
         """
-        Генерирует случайную фамилию.
+        Generates a random last name.
 
-        :return: Случайная фамилия.
+        :return: A random last name.
         """
         return self.faker.last_name()
 
     def first_name(self) -> str:
         """
-        Генерирует случайное имя.
+        Generates a random first name.
 
-        :return: Случайное имя.
+        :return: A random first name.
         """
         return self.faker.first_name()
 
     def middle_name(self) -> str:
         """
-        Генерирует случайное отчество.
+        Generates a random middle name.
 
-        :return: Случайное отчество.
+        :return: A random middle name.
         """
         return self.faker.first_name_male()
 
     def phone_number(self) -> str:
         """
-        Генерирует случайный номер телефона.
+        Generates a random phone number.
 
-        :return: Случайный номер телефона.
+        :return: A random phone number.
         """
         return self.faker.phone_number()
 
     def float(self, start: int = 1, end: int = 100) -> float:
         """
-        Генерирует случайное число с плавающей запятой в указанном диапазоне.
+        Generates a random floating point number within the given range.
 
-        :param start: Начало диапазона (включительно).
-        :param end: Конец диапазона (включительно).
-        :return: Случайное число с плавающей запятой.
+        :param start: The lower bound of the range (inclusive).
+        :param end: The upper bound of the range (inclusive).
+        :return: A random floating point number.
         """
         return self.faker.pyfloat(min_value=start, max_value=end, right_digits=2)
 
     def amount(self) -> float:
         """
-         Генерирует случайную денежную сумму.
+        Generates a random money amount.
 
-         :return: Сумма от 1 до 1000.
-         """
+        :return: An amount between 1 and 1000.
+        """
         return self.float(1, 1000)
 
-# Создаем экземпляр класса Fake с использованием Faker
+# Create an instance of the Fake class backed by Faker
 fake = Fake(faker=Faker())

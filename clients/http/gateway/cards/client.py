@@ -12,15 +12,15 @@ from clients.http.gateway.cards.schema import (
 
 class CardsGatewayHTTPClient(HTTPClient):
     """
-    Клиент для взаимодействия с /api/v1/cards сервиса http-gateway.
+    Client to interact with the /api/v1/cards endpoint of the http-gateway service.
     """
 
     def issue_virtual_card_api(self, request: IssueVirtualCardRequestSchema) -> Response:
         """
-        Выпуск новой виртуальной карты.
+        Issues a new virtual card.
 
-        :param request: Словарь с данными ID пользователя и ID счета.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param request: The request schema containing the user ID and the account ID.
+        :return: An HTTP response from the server.
         """
         return self.post(
             "/api/v1/cards/issue-virtual-card",
@@ -29,10 +29,10 @@ class CardsGatewayHTTPClient(HTTPClient):
 
     def issue_physical_card_api(self, request: IssuePhysicalCardRequestSchema) -> Response:
         """
-        Выпуск новой физической карты.
+        Issues a new physical card.
 
-        :param request: Словарь с данными ID пользователя и ID счета.
-        :return: Ответ от сервера (объект httpx.Response).
+        :param request: The request schema containing the user ID and the account ID.
+        :return: An HTTP response from the server.
         """
         return self.post(
             "/api/v1/cards/issue-physical-card",
@@ -52,8 +52,8 @@ class CardsGatewayHTTPClient(HTTPClient):
 
 def build_cards_gateway_http_client() -> CardsGatewayHTTPClient:
     """
-    Функция создаёт экземпляр CardsGatewayHTTPClient с уже настроенным HTTP-клиентом.
+    Creates an instance of CardsGatewayHTTPClient with a pre-configured HTTP client.
 
-    :return: Готовый к использованию CardsGatewayHTTPClient.
+    :return: A ready-to-use CardsGatewayHTTPClient instance.
     """
     return CardsGatewayHTTPClient(client=build_gateway_http_client())
