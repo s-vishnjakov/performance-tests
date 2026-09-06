@@ -1,5 +1,3 @@
-import time
-
 from httpx import Response
 
 from clients.http.client import HTTPClient

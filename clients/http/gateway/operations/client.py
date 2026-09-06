@@ -22,8 +22,7 @@ from clients.http.gateway.operations.schema import (
     MakeTopUpOperationRequestSchema,
     MakeTopUpOperationResponseSchema,
     MakeTransferOperationRequestSchema,
-    MakeTransferOperationResponseSchema,
-    OperationStatus
+    MakeTransferOperationResponseSchema
 )
 
 
@@ -208,12 +207,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeFeeOperationResponseSchema object containing the operation data.
         """
-        request = MakeFeeOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=55.77,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeFeeOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_fee_operation_api(request)
         return MakeFeeOperationResponseSchema.model_validate_json(response.text)
 
@@ -225,12 +219,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeTopUpOperationResponseSchema object containing the operation data.
         """
-        request = MakeTopUpOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=1500.00,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeTopUpOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_top_up_operation_api(request)
         return MakeTopUpOperationResponseSchema.model_validate_json(response.text)
 
@@ -242,12 +231,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeCashbackOperationResponseSchema object containing the operation data.
         """
-        request = MakeCashbackOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=28.00,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeCashbackOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_cashback_operation_api(request)
         return MakeCashbackOperationResponseSchema.model_validate_json(response.text)
 
@@ -259,21 +243,11 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeTransferOperationResponseSchema object containing the operation data.
         """
-        request = MakeTransferOperationRequestSchema(
-            status=OperationStatus.FAILED,
-            amount=350.00,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeTransferOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_transfer_operation_api(request)
         return MakeTransferOperationResponseSchema.model_validate_json(response.text)
 
-    def make_purchase_operation(
-            self,
-            card_id: str,
-            account_id: str,
-            category: str
-    ) -> MakePurchaseOperationResponseSchema:
+    def make_purchase_operation(self, card_id: str, account_id: str) -> MakePurchaseOperationResponseSchema:
         """
         Makes a purchase operation and returns the response as a validated schema object.
 
@@ -282,13 +256,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param category: The category of the purchase.
         :return: A validated MakePurchaseOperationResponseSchema object containing the operation data.
         """
-        request = MakePurchaseOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=99.98,
-            card_id=card_id,
-            account_id=account_id,
-            category=category
-        )
+        request = MakePurchaseOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_purchase_operation_api(request)
         return MakePurchaseOperationResponseSchema.model_validate_json(response.text)
 
@@ -300,12 +268,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeBillPaymentOperationResponseSchema object containing the operation data.
         """
-        request = MakeBillPaymentOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=128.50,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeBillPaymentOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_bill_payment_operation_api(request)
         return MakeBillPaymentOperationResponseSchema.model_validate_json(response.text)
 
@@ -321,12 +284,7 @@ class OperationsGatewayHTTPClient(HTTPClient):
         :param account_id: The unique identifier of the account.
         :return: A validated MakeCashWithdrawalOperationResponseSchema object containing the operation data.
         """
-        request = MakeCashWithdrawalOperationRequestSchema(
-            status=OperationStatus.COMPLETED,
-            amount=1000.00,
-            card_id=card_id,
-            account_id=account_id
-        )
+        request = MakeCashWithdrawalOperationRequestSchema(card_id=card_id, account_id=account_id)
         response = self.make_cash_withdrawal_operation_api(request)
         return MakeCashWithdrawalOperationResponseSchema.model_validate_json(response.text)
 
