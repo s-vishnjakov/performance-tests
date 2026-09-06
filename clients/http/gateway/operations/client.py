@@ -22,7 +22,7 @@ from clients.http.gateway.operations.schema import (
     MakeTopUpOperationRequestSchema,
     MakeTopUpOperationResponseSchema,
     MakeTransferOperationRequestSchema,
-    MakeTransferOperationResponseSchema
+    MakeTransferOperationResponseSchema, OperationStatus
 )
 
 
@@ -253,7 +253,6 @@ class OperationsGatewayHTTPClient(HTTPClient):
 
         :param card_id: The unique identifier of the card.
         :param account_id: The unique identifier of the account.
-        :param category: The category of the purchase.
         :return: A validated MakePurchaseOperationResponseSchema object containing the operation data.
         """
         request = MakePurchaseOperationRequestSchema(card_id=card_id, account_id=account_id)

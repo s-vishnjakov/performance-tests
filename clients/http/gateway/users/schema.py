@@ -1,6 +1,7 @@
 from pydantic import BaseModel, Field, ConfigDict, EmailStr
 from tools.fakers import fake
 
+
 class UserSchema(BaseModel):
     """Schema for user"""
     id: str

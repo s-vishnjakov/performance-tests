@@ -4,6 +4,7 @@ from enum import StrEnum
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl
 from tools.fakers import fake
 
+
 class OperationType(StrEnum):
     FEE = "FEE"
     TOP_UP = "TOP_UP"
