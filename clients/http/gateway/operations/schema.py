@@ -95,6 +95,7 @@ class GetOperationsSummaryResponseSchema(BaseModel):
     """
     summary: OperationsSummarySchema
 
+
 class GetOperationReceiptResponseSchema(BaseModel):
     """
     Response structure for getting the operation receipt.
