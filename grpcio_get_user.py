@@ -10,7 +10,7 @@ channel = grpc.insecure_channel("localhost:9003")
 
 users_gateway_service = UsersGatewayServiceStub(channel)
 
-crete_user_request = CreateUserRequest(
+create_user_request = CreateUserRequest(
     email=fake.email(),
     last_name=fake.last_name(),
     first_name=fake.first_name(),
@@ -18,9 +18,9 @@ crete_user_request = CreateUserRequest(
     phone_number=fake.phone_number()
 )
 
-crete_user_response: CreateUserResponse = users_gateway_service.CreateUser(crete_user_request)
-print('Create users response:', crete_user_response)
+create_user_response: CreateUserResponse = users_gateway_service.CreateUser(create_user_request)
+print('Create users response:', create_user_response)
 
-get_user_request = GetUserRequest(id=crete_user_response.user.id)
+get_user_request = GetUserRequest(id=create_user_response.user.id)
 get_user_response: GetUserResponse = users_gateway_service.GetUser(get_user_request)
 print('Get user response:', get_user_response)
