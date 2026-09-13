@@ -73,4 +73,4 @@ def build_users_gateway_grpc_client() -> UsersGatewayGRPCClient:
 
     :return: Initialized client for UsersGatewayService.
     """
-    return UsersGatewayGRPCClient(client=build_users_gateway_grpc_client())
+    return UsersGatewayGRPCClient(channel=build_gateway_grpc_client())
