@@ -2,6 +2,7 @@ import time
 
 from faker import Faker
 from faker.providers.python import TEnum
+from google.protobuf.internal.enum_type_wrapper import EnumTypeWrapper
 
 
 class Fake:
@@ -22,6 +23,15 @@ class Fake:
         :return: A random member of the enumeration.
         """
         return self.faker.enum(value)
+
+    def proto_enum(self, value: EnumTypeWrapper) -> int:
+        """
+        Selecting a random value from a Proto enum type.
+
+        :param value: Proto enum class to generate the value.
+        :return: Random value from the enum.
+        """
+        return self.faker.random_element(value.values())
 
     def email(self) -> str:
         """
