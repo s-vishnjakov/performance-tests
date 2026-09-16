@@ -74,7 +74,7 @@ class AccountsGatewayGRPCClient(GRPCClient):
         :param request: gRPC request with the user ID.
         :return: Response from the service with the opened debit card account details.
         """
-        return self.stub.OpenDepositAccount(request)
+        return self.stub.OpenDebitCardAccount(request)
 
     def open_credit_card_account_api(self, request: OpenCreditCardAccountRequest) -> OpenCreditCardAccountResponse:
         """
