@@ -1,6 +1,6 @@
 from httpx import Response
 
-from clients.http.client import HTTPClient
+from clients.http.client import HTTPClient, HTTPClientExtensions
 from clients.http.gateway.client import build_gateway_http_client
 from clients.http.gateway.users.schema import (
     GetUserResponseSchema,
@@ -21,7 +21,9 @@ class UsersGatewayHTTPClient(HTTPClient):
         :param user_id: The unique identifier of the user.
         :return: An HTTP response containing the user data.
         """
-        return self.get(f"/api/v1/users/{user_id}")
+        return self.get(
+            f"/api/v1/users/{user_id}",
+            extensions=HTTPClientExtensions(route="/api/v1/users/{user_id}"))
 
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
         """
