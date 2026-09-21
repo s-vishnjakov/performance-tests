@@ -1,7 +1,10 @@
 from httpx import Response
-
+from locust.env import Environment
 from clients.http.client import HTTPClient, HTTPClientExtensions
-from clients.http.gateway.client import build_gateway_http_client
+from clients.http.gateway.client import (
+    build_gateway_http_client,
+    build_gateway_locust_http_client
+)
 from clients.http.gateway.users.schema import (
     GetUserResponseSchema,
     CreateUserResponseSchema,
@@ -63,3 +66,16 @@ def build_users_gateway_http_client() -> UsersGatewayHTTPClient:
     :return: A ready-to-use UsersGatewayHTTPClient instance.
     """
     return UsersGatewayHTTPClient(client=build_gateway_http_client())
+
+
+def build_users_gateway_locust_http_client(environment: Environment) -> UsersGatewayHTTPClient:
+    """
+    Creates a UsersGatewayHTTPClient instance adapted for Locust.
+    The client automatically collects metrics and passes them to Locust via hooks.
+    Used exclusively in load tests.
+
+
+    :param environment: Locust environment object.
+    :return: UsersGatewayHTTPClient instance with metrics collection hooks.
+    """
+    return UsersGatewayHTTPClient(client=build_gateway_locust_http_client(environment))

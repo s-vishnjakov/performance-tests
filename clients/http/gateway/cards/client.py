@@ -1,7 +1,11 @@
 from httpx import Response
+from locust.env import Environment
 
 from clients.http.client import HTTPClient
-from clients.http.gateway.client import build_gateway_http_client
+from clients.http.gateway.client import (
+    build_gateway_http_client,
+    build_gateway_locust_http_client
+)
 from clients.http.gateway.cards.schema import (
     IssuePhysicalCardRequestSchema,
     IssuePhysicalCardResponseSchema,
@@ -57,3 +61,16 @@ def build_cards_gateway_http_client() -> CardsGatewayHTTPClient:
     :return: A ready-to-use CardsGatewayHTTPClient instance.
     """
     return CardsGatewayHTTPClient(client=build_gateway_http_client())
+
+
+def build_cards_gateway_locust_http_client(environment: Environment) -> CardsGatewayHTTPClient:
+    """
+    Creates a CardsGatewayHTTPClient instance adapted for Locust.
+
+    The client automatically collects metrics and passes them to Locust via hooks.
+    Used exclusively in load tests.
+
+    :param environment: Locust environment object.
+    :return: CardsGatewayHTTPClient instance with metric collection hooks.
+    """
+    return CardsGatewayHTTPClient(client=build_gateway_locust_http_client(environment))
