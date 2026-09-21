@@ -1,6 +1,5 @@
 from httpx import Response
 from locust.env import Environment
-
 from clients.http.client import HTTPClient
 from clients.http.gateway.client import (
     build_gateway_http_client,
