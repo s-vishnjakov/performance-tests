@@ -48,8 +48,3 @@ class HTTPClient:
         :return: A Response object containing the response data.
         """
         return self.client.post(url=url, json=json, extensions=extensions)  # Transmit extension into httpx.Client
-
-
-client = HTTPClient()
-
-client.get()
