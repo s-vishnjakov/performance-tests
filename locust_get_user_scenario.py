@@ -19,3 +19,5 @@ class GetUserScenarioUser(User):
     @task
     def get_user(self):
         self.users_gateway_client.get_user(self.create_user_response.user.id)
+
+
