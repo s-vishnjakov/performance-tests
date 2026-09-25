@@ -1,5 +1,5 @@
 import logging
-from httpx import Client
+from httpx import Client, Limits
 from locust.env import Environment
 from clients.http.event_hooks.locust_event_hook import (
     locust_request_event_hook,
@@ -37,6 +37,7 @@ def build_gateway_locust_http_client(environment: Environment) -> Client:
     return Client(
         timeout=100,
         base_url="http://localhost:8003",
+        limits=Limits(max_keepalive_connections=0),
         event_hooks={
             "request": [locust_request_event_hook],
             "response": [locust_response_event_hook(environment)]
