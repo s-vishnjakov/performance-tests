@@ -1,6 +1,7 @@
 from grpc import Channel
+from locust.env import Environment
 from clients.grpc.client import GRPCClient
-from clients.grpc.gateway.client import build_gateway_grpc_client
+from clients.grpc.gateway.client import build_gateway_grpc_client, build_gateway_locust_grpc_client
 from contracts.services.gateway.accounts.accounts_gateway_service_pb2_grpc import AccountsGatewayServiceStub
 from contracts.services.gateway.accounts.rpc_get_accounts_pb2 import (
     GetAccountsRequest,
@@ -113,3 +114,7 @@ def build_accounts_gateway_grpc_client() -> AccountsGatewayGRPCClient:
     :return: Initialized client for AccountsGatewayService.
     """
     return AccountsGatewayGRPCClient(channel=build_gateway_grpc_client())
+
+
+def build_accounts_gateway_locust_grpc_client(environment: Environment) -> AccountsGatewayGRPCClient:
+    return AccountsGatewayGRPCClient(channel=build_gateway_locust_grpc_client(environment))
