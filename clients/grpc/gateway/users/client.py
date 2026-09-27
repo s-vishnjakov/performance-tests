@@ -77,4 +77,13 @@ def build_users_gateway_grpc_client() -> UsersGatewayGRPCClient:
 
 
 def build_users_gateway_locust_grpc_client(environment: Environment) -> UsersGatewayGRPCClient:
+    """
+    Builder for creating a UsersGatewayGRPCClient instance adapted for the Locust.
+
+    The client automatically collects metrics and passes them to the Locust via interceptor.
+    Used exclusively in performance tests.
+
+    :param environment: Locust environment object.
+    :return: UsersGatewayGRPCClient instance with metric collection interceptor.
+    """
     return UsersGatewayGRPCClient(channel=build_gateway_locust_grpc_client(environment))

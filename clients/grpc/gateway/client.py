@@ -12,7 +12,18 @@ def build_gateway_grpc_client() -> Channel:
 
 
 def build_gateway_locust_grpc_client(environment: Environment) -> Channel:
-    locust_interceptor = LocustInterceptor(environment=environment)
-    channel = insecure_channel("localhost:9003")
+    """
+    Builder for creating a gRPC channel adapted for the Locust.
+    The channel automatically includes a LocustInterceptor,
+    which logs calls in the Locust metrics system.
 
+    :param environment: Locust runtime environment (required for sending events).
+    :return: A gRPC channel with an interceptor, suitable for performance testing.
+    """
+
+    # Create an interceptor instance, pass the Locust environment to it
+    locust_interceptor = LocustInterceptor(environment=environment)
+    # Create a regular channel
+    channel = insecure_channel("localhost:9003")
+    # Wrap the channel with an interceptor so that all requests pass through it
     return intercept_channel(channel, locust_interceptor)
