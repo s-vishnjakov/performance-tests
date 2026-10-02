@@ -57,7 +57,7 @@ def build_documents_gateway_http_client() -> DocumentsGatewayHTTPClient:
     """
     return DocumentsGatewayHTTPClient(client=build_gateway_http_client())
 
-def build_users_gateway_locust_http_client(environment: Environment) -> DocumentsGatewayHTTPClient:
+def build_documents_gateway_locust_http_client(environment: Environment) -> DocumentsGatewayHTTPClient:
     """
     Creates a DocumentsGatewayHTTPClient instance adapted for Locust.
     The client automatically collects metrics and passes them to Locust via hooks.
