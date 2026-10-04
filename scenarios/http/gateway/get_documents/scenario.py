@@ -20,7 +20,7 @@ class GetDocumentsSequentialTaskSet(GatewayHTTPSequentialTaskSet):
     open_savings_account_response: OpenSavingsAccountResponseSchema | None = None
 
     @task
-    def cerate_user(self):
+    def create_user(self):
         self.create_user_response = self.users_gateway_client.create_user()
 
     @task
