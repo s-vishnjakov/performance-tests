@@ -1,20 +1,20 @@
 from locust import task, User, between
 
-from clients.grpc.gateway.locust import GatewayGRPCTaskSet
-from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserResponse
+from clients.http.gateway.locust import GatewayHTTPTaskSet
+from clients.http.gateway.users.schema import CreateUserResponseSchema
 
 
-class GetAccountsTaskSet(GatewayGRPCTaskSet):
+class GetAccountsTaskSet(GatewayHTTPTaskSet):
     """
     Load scenario that has the following tasks:
     1. Creating a new user.
     2. Opening a deposit account for the user (if a user created).
     3. Receives the user accounts (if a user created).
 
-    Uses the basic GatewayGRPCTaskSet and the API clients already created within.
+    Uses the basic GatewayHTTPTaskSet and the API clients already created within.
     """
 
-    create_user_response: CreateUserResponse | None = None
+    create_user_response: CreateUserResponseSchema | None = None
 
     @task(2)
     def create_user(self):
