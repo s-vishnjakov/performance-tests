@@ -1,5 +1,6 @@
 from locust import User, between
 
+
 class LocustBaseUser(User):
     """
     The base virtual user for Locust, from which all scenarios are inherited.

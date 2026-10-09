@@ -46,7 +46,7 @@ class GetDocumentsSequentialTaskSet(GatewayHTTPSequentialTaskSet):
         )
 
 
-class GetDocumentsUser(LocustBaseUser):
+class GetDocumentsScenarioUser(LocustBaseUser):
     """
     Locust user executing the sequential document retrieval scenario.
     """

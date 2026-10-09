@@ -1,7 +1,8 @@
-from locust import task, User, between
+from locust import task
 
 from clients.grpc.gateway.locust import GatewayGRPCTaskSet
 from contracts.services.gateway.users.rpc_create_user_pb2 import CreateUserResponse
+from tools.locust.user import LocustBaseUser
 
 
 class GetAccountsTaskSet(GatewayGRPCTaskSet):
@@ -35,10 +36,8 @@ class GetAccountsTaskSet(GatewayGRPCTaskSet):
         self.accounts_gateway_client.get_accounts(user_id=self.create_user_response.user.id)
 
 
-class GetAccountsUser(User):
+class GetAccountsScenarioUser(LocustBaseUser):
     """
     Locust user executing the TaskSet.
     """
-    host = "localhost"
     tasks = [GetAccountsTaskSet]
-    wait_time = between(1, 3)
