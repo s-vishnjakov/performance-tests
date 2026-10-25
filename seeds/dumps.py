@@ -17,7 +17,7 @@ def save_seeds_result(result: SeedsResult, scenario: str):
         file.write(result.model_dump_json())
 
 
-def load_seeds_results(scenario: str) -> SeedsResult:
+def load_seeds_result(scenario: str) -> SeedsResult:
     """
     Loads seeding results from a JSON file.
 

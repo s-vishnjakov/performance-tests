@@ -28,13 +28,19 @@ class SeedAccountsPlan(BaseModel):
     Attributes:
         count (int): Number of accounts of this type.
         physical_cards (SeedCardsPlan): Plan for creating physical cards in accounts.
+        virtual_cards (SeedCardsPlan): Plan for creating virtual cards in accounts.
         top_up_operations (SeedOperationsPlan): Plan for creating top-up operations.
         purchase_operations (SeedOperationsPlan): Plan for creating purchase operations.
+        transfer_operations (SeedOperationsPlan): Plan for creating transfer operations.
+        cash_withdrawal_operations (SeedOperationsPlan): Plan for creating cash withdrawal operations.
     """
     count: int = 0
     physical_cards: SeedCardsPlan = Field(default_factory=SeedCardsPlan)
+    virtual_cards: SeedCardsPlan = Field(default_factory=SeedCardsPlan)
     top_up_operations: SeedOperationsPlan = Field(default_factory=SeedOperationsPlan)
     purchase_operations: SeedOperationsPlan = Field(default_factory=SeedOperationsPlan)
+    transfer_operations: SeedOperationsPlan = Field(default_factory=SeedOperationsPlan)
+    cash_withdrawal_operations: SeedOperationsPlan = Field(default_factory=SeedOperationsPlan)
 
 
 class SeedUsersPlan(BaseModel):

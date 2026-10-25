@@ -29,13 +29,19 @@ class SeedAccountResult(BaseModel):
     Attributes:
         account_id (str): Unique account identifier.
         physical_cards (list[SeedCardResult]): List of physical cards linked to the account.
+        virtual_cards (list[SeedCardResult]): List of virtual cards linked to the account.
         top_up_operations (list[SeedOperationResult]): List of top-up operations.
         purchase_operations (list[SeedOperationResult]): List of purchase operations.
+        transfer_operations (list[SeedOperationResult]): List of transfer operations.
+        cash_withdrawal_operations (list[SeedOperationResult]): List of cash withdrawal operations.
     """
     account_id: str
     physical_cards: list[SeedCardResult] = Field(default_factory=list)
+    virtual_cards: list[SeedCardResult] = Field(default_factory=list)
     top_up_operations: list[SeedOperationResult] = Field(default_factory=list)
     purchase_operations: list[SeedOperationResult] = Field(default_factory=list)
+    transfer_operations: list[SeedOperationResult] = Field(default_factory=list)
+    cash_withdrawal_operations: list[SeedOperationResult] = Field(default_factory=list)
 
 
 class SeedUserResult(BaseModel):
