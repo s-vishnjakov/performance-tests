@@ -29,7 +29,7 @@ class GetDocumentsSequentialTaskSet(GatewayHTTPSequentialTaskSet):
         if not self.create_user_response:
             return  # If a user not created, there is no point to continue.
 
-        self.open_savings_account_response = self.accounts_gateway_client.open_saving_account(
+        self.open_savings_account_response = self.accounts_gateway_client.open_savings_account(
             user_id=self.create_user_response.user.id
         )
 

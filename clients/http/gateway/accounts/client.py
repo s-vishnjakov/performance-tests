@@ -96,7 +96,7 @@ class AccountsGatewayHTTPClient(HTTPClient):
         response = self.open_deposit_account_api(request)
         return OpenDepositAccountResponseSchema.model_validate_json(response.text)
 
-    def open_saving_account(self, user_id: str) -> OpenSavingsAccountResponseSchema:
+    def open_savings_account(self, user_id: str) -> OpenSavingsAccountResponseSchema:
         request = OpenSavingsAccountRequestSchema(user_id=user_id)
         response = self.open_savings_account_api(request)
         return OpenSavingsAccountResponseSchema.model_validate_json(response.text)
