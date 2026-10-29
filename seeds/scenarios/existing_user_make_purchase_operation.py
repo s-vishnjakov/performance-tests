@@ -7,6 +7,7 @@ class ExistingUserMakePurchaseOperationSeedsScenario(SeedsScenario):
     Seedling script for an existing user who makes a purchase.
     Creates 300 users, opens a credit account, and issues cards.
     """
+
     @property
     def plan(self) -> SeedsPlan:
         """
@@ -30,6 +31,7 @@ class ExistingUserMakePurchaseOperationSeedsScenario(SeedsScenario):
         The name of the seeding script that will be used to save data.
         """
         return "existing_user_make_purchase_operation"
+
 
 if __name__ == '__main__':
     # If the file is run directly, create a script object and run it.

@@ -5,13 +5,13 @@ from seeds.schema.plan import SeedsPlan, SeedUsersPlan, SeedAccountsPlan
 class ExistingUserIssueVirtualCardSeedsScenario(SeedsScenario):
     """
     Seeding scenario for an existing user issuing a virtual card.
-    Creates 300 users, each of whom receives a debit card account.
+    Creates users, each of whom receives a debit card account.
     """
     @property
     def plan(self) -> SeedsPlan:
         """
         Returns the seeding plan for creating users and their accounts.
-        We're creating 300 users, each of whom will receive a debit card account.
+        We're creating users, each of whom will receive a debit card account.
         """
         return SeedsPlan(
             users=SeedUsersPlan(
