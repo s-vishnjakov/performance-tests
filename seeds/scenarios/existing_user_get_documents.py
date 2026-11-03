@@ -2,7 +2,7 @@ from seeds.scenario import SeedsScenario
 from seeds.schema.plan import SeedsPlan, SeedUsersPlan, SeedAccountsPlan
 
 
-class ExistingUsersGetDocumentsSeedsScenario(SeedsScenario):
+class ExistingUserGetDocumentsSeedsScenario(SeedsScenario):
     """
     Seedling scenario for an existing user viewing their accounts and documents.
     Create 100 users, each of whom receives a debit and savings account.
