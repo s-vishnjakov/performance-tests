@@ -17,7 +17,7 @@ class ExistingUserGetDocumentsSeedsScenario(SeedsScenario):
             users=SeedUsersPlan(
                 count=100,
                 savings_accounts=SeedAccountsPlan(count=1),
-                deposit_accounts=SeedAccountsPlan(count=1)
+                debit_card_accounts=SeedAccountsPlan(count=1)
             )
         )
     
@@ -34,5 +34,5 @@ if __name__ == '__main__':
     Launch the seeding script manually.
     Create a script object and call the build method to create the data.
     """
-    seeds_scenario = ExistingUsersGetDocumentsSeedsScenario()
+    seeds_scenario = ExistingUserGetDocumentsSeedsScenario()
     seeds_scenario.build()
