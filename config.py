@@ -23,5 +23,3 @@ class Settings(BaseSettings):
 
 # Глобальный объект настроек — его можно импортировать в любом месте проекта
 settings = Settings()
-
-print(settings)

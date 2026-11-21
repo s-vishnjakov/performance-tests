@@ -1,6 +1,7 @@
 from grpc import Channel, insecure_channel, intercept_channel
 from clients.grpc.interceptors.locust_interceptor import LocustInterceptor
 from locust.env import Environment
+from config import settings
 
 def build_gateway_grpc_client() -> Channel:
     """
@@ -8,7 +9,7 @@ def build_gateway_grpc_client() -> Channel:
 
     :return: gRPC channel (Channel) configured at localhost:9003.
     """
-    return insecure_channel("localhost:9003")
+    return insecure_channel(settings.gateway_grpc_client.client_url)
 
 
 def build_gateway_locust_grpc_client(environment: Environment) -> Channel:
@@ -24,6 +25,6 @@ def build_gateway_locust_grpc_client(environment: Environment) -> Channel:
     # Create an interceptor instance, pass the Locust environment to it
     locust_interceptor = LocustInterceptor(environment=environment)
     # Create a regular channel
-    channel = insecure_channel("localhost:9003")
+    channel = insecure_channel(settings.gateway_grpc_client.client_url)
     # Wrap the channel with an interceptor so that all requests pass through it
     return intercept_channel(channel, locust_interceptor)
