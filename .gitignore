@@ -17,6 +17,12 @@ env/
 *.swp
 *.swo
 
+# locust
+dumps
+locust_*.scv
+locust_*.json
+report.html
+
 # OS
 .DS_Store
 Thumbs.db
