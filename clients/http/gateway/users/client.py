@@ -10,6 +10,7 @@ from clients.http.gateway.users.schema import (
     CreateUserResponseSchema,
     CreateUserRequestSchema
 )
+from tools.routes import APIRoutes
 
 
 class UsersGatewayHTTPClient(HTTPClient):
@@ -25,8 +26,8 @@ class UsersGatewayHTTPClient(HTTPClient):
         :return: An HTTP response containing the user data.
         """
         return self.get(
-            f"/api/v1/users/{user_id}",
-            extensions=HTTPClientExtensions(route="/api/v1/users/{user_id}"))
+            f"{APIRoutes.USERS}/{user_id}",
+            extensions=HTTPClientExtensions(route=f"{APIRoutes.USERS}/{{user_id}}"))
 
     def create_user_api(self, request: CreateUserRequestSchema) -> Response:
         """
@@ -35,7 +36,7 @@ class UsersGatewayHTTPClient(HTTPClient):
         :param request: The request schema containing the new user data.
         :return: An HTTP response from the server.
         """
-        return self.post("/api/v1/users", json=request.model_dump(by_alias=True))
+        return self.post(APIRoutes.USERS, json=request.model_dump(by_alias=True))
 
     def get_user(self, user_id: str) -> GetUserResponseSchema:
         """
